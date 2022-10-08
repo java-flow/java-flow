@@ -1,14 +1,14 @@
 # Java Flow
 
-Streaming programming and event driven lightweight development framework.
+采用流式编程、事件驱动的轻量级开发框架。
 
-[中文文档](./README_CN.md)
+[English](./README.md)
 
-## Installing
+## 安装
 
-1. Clone project `git clone https://github.com/java-flow/java-flow.git`
-2. Publish to local Maven repository `gradle publishToMavenLocal`
-3. To add a dependency using Maven, use the following:
+1. 克隆源码到本地 `git clone https://github.com/java-flow/java-flow.git`
+2. 安装到本地 Maven 仓库 `gradle publishToMavenLocal`
+3. 在项目中引入依赖
 
 ```xml
 <dependency>
@@ -18,13 +18,13 @@ Streaming programming and event driven lightweight development framework.
 </dependency>
 ```
 
-## Example
+## 示例
 
-More examples can be viewed: [Examples](https://github.com/java-flow/java-flow-examples)
+更多使用示例可以查看 [示例代码仓库](https://github.com/java-flow/java-flow-examples)
 
-### Tcp Server
+### Tcp 服务端
 
-#### Echo Server
+#### Echo 原样应答
 
 ```java
 @AllArgsConstructor
@@ -46,7 +46,7 @@ public class EchoFlow extends FlowDefiner {
 }
 ```
 
-#### Print Time Server
+#### Print Time 打印时间
 
 ```java
 @AllArgsConstructor
@@ -69,9 +69,9 @@ public class PrintTimeFlow extends FlowDefiner {
 }
 ```
 
-### Tcp Client
+### Tcp 客户端
 
-#### Request
+#### Request 请求
 
 ```java
 @AllArgsConstructor
@@ -96,9 +96,9 @@ public class RequestFlow extends FlowDefiner {
 }
 ```
 
-### HTTP Server
+### HTTP 服务端
 
-#### Echo Server
+#### Echo 原样应答
 
 ```java
 @AllArgsConstructor
@@ -124,7 +124,7 @@ public class EchoFlow extends FlowDefiner {
 }
 ```
 
-#### Print Time Server
+#### Print Time 打印时间
 
 ```java
 @AllArgsConstructor
@@ -152,9 +152,9 @@ public class PrintTimeFlow extends FlowDefiner {
 
 ```
 
-### HTTP Client
+### HTTP 客户端
 
-#### Request
+#### Request 请求
 
 ```java
 @AllArgsConstructor
@@ -180,37 +180,34 @@ public class RequestFlow extends FlowDefiner {
 }
 ```
 
-## Concept
+## 概念
 
-There are mainly the following concepts:
+主要分为以下几个概念：
 
-- Object
-    - `Flow`
-    - `Node`
-        - `Network`
-        - `Function`
-    - `Msg`
-        - `payload`
-- Method
-    - `Flow.next(node)` Insert a node at the end of the flow.
-    - `Flow.deploy()` Deploy flow，Trigger all nodes `onDeploy` method.
-    - `Flow.destroy()` Destroy flow，Trigger all nodes `onDestroy` method.
-    - `Flow.nextInvoke(node, msg)` Invoke flow，Start from the specified node.
-    - `Flow.invoke(msg)` Invoke flow. Start from the first node.
-    - `Node.invoke(msg)` Call the node. The input is the message returned by the previous node, and the output message will be passed to the next node.
-- Event
-    - `Node.onDeploy` Triggered during flow deployment. The node resource can be initialized at this time.
-    - `Node.onDestroy` Triggered during flow destruction. The node resources can be released at this time.
+- 对象
+  - `Flow` 流程
+  - `Node` 节点
+    - `Network` 网络节点
+    - `Function` 处理方法节点
+  - `Msg` 消息
+    - `payload` 消息主体
+- 方法
+  - `Flow.next(node)` 将节点插入到流程末尾
+  - `Flow.deploy()` 部署流程，触发所有节点 onDeploy 方法
+  - `Flow.destroy()` 销毁流程，触发所有节点 onDestroy 方法
+  - `Flow.nextInvoke(node, msg)` 调用流程，以某个节点为起点，开始顺序调用后续节点
+  - `Flow.invoke(msg)` 调用流程，从起点开始
+  - `Node.invoke(msg)` 调用节点，输入为上一个节点返回的消息，输出的消息将传递给下一个节点
+- 事件
+  - `Node.onDeploy` 流程部署时触发，可进行节点初始化
+  - `Node.onDestroy` 流程销毁时触发，可进行节点资源释放
 
-## Dependency
+## 依赖
 
-- TcpIn、TcpOut used: [Mina](https://mina.apache.org/mina-project/userguide/user-guide-toc.html)
-- HttpIn、HttpOut used: [Spark](http://sparkjava.com/documentation.html)
+- TcpIn、TcpOut 使用了 [Mina](https://mina.apache.org/mina-project/userguide/user-guide-toc.html) 框架实现
+- HttpIn、HttpOut 使用了 [Spark](http://sparkjava.com/documentation.html) 框架实现
 
-## About
+## 关于
 
-The inspiration of this project comes from [Node-Red](https://nodered.org/),
-Imagine that it would be a very flexible and simple development method if common 
-basic functions were encapsulated into processing nodes, and each node provided 
-unified input and output ports to form a business process. This will be suitable 
-for simple application development.
+该项目的灵感来源于 [Node-Red](https://nodered.org/)，试想如果将常见基础功能封装成一个个处理节点
+，每个节点统一提供输入输出端口，将节点组成业务流程，将会是十分灵活简单的开发方式。对于简单应答式应用的开发会是一大利器。
