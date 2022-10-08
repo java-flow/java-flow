@@ -22,7 +22,7 @@
 
 更多使用示例可以查看 [示例代码仓库](https://github.com/java-flow/java-flow-examples)
 
-### Tcp 服务端
+### TCP 服务端
 
 #### Echo 原样应答
 
@@ -69,7 +69,7 @@ public class PrintTimeFlow extends FlowDefiner {
 }
 ```
 
-### Tcp 客户端
+### TCP 客户端
 
 #### Request 请求
 

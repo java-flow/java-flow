@@ -22,7 +22,7 @@ Streaming programming and event driven lightweight development framework.
 
 More examples can be viewed: [Examples](https://github.com/java-flow/java-flow-examples)
 
-### Tcp Server
+### TCP Server
 
 #### Echo Server
 
@@ -69,7 +69,7 @@ public class PrintTimeFlow extends FlowDefiner {
 }
 ```
 
-### Tcp Client
+### TCP Client
 
 #### Request
 
